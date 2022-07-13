@@ -13,8 +13,13 @@ client.once('ready', c=>{
 client.on("messageCreate", c=>{
     if(c.author.bot) return;
     if(c.content.indexOf('!bt Telegram ')==0){
-        telegram.sendMessage(process.env.DTid,c.content.replace('!bt Telegram ', ''));
-        telegram.startPolling();
+        try{
+            telegram.sendMessage(process.env.DTid,c.content.replace('!bt Telegram ', ''));
+            telegram.startPolling();
+        }catch(e){
+            console.log('Error con el envio');
+            return;
+        }
         c.reply('Enviado');
     }
 });
