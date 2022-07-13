@@ -17,7 +17,7 @@ client.on("messageCreate", c=>{
             telegram.sendMessage(process.env.DTid,c.content.replace('!bt Telegram ', ''));
             telegram.startPolling();
         }catch(e){
-            console.log('Error con el envio');
+            console.log('Error al enviar a Telegram');
             return;
         }
         c.reply('Enviado');
